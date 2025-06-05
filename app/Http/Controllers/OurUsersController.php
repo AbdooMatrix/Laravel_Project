@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\our_users;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+
 
 class OurUsersController extends Controller
 {
@@ -20,54 +22,58 @@ class OurUsersController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new user.
      *
      * @return \Illuminate\Http\Response
      */
 
-     /** the create() function is used to display the form where the user can enter 
-      * details to add a new record — in your case, a new user. */
+
     public function create()
     {
         return view('create'); // Returns the view called create.blade.php.
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created user in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
-        // validate() -> Ensures data is correct before saving
-        $request->validate([
-            // edit here as you want based on your validations
-            'user_name'     =>  'required',
-            'email'         =>  'required|email|unique:students',
-            'user_image'    =>  'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000'
-        ]);
 
-        $file_name = time() . '.' . request()->student_image->getClientOriginalExtension();
+        // Validate the incoming request
+        // $request->validate([
+        //     'fullName'       => 'required|string|max:200',
+        //     'username'       => 'required|string|max:200|unique:our_users',
+        //     'phone'          => 'required|string|max:20',
+        //     'whatsAppNumber' => 'required|string|max:20',
+        //     'address'        => 'required|string',
+        //     'email'          => 'required|email|unique:our_users',
+        //     'password'       => 'required|string|min:6|confirmed', // assumes there's a password_confirmation field
+        //     'image'          => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000'
+        // ]);
 
-        request()->student_image->move(public_path('images'), $file_name);
+        // Store the uploaded image
+        $imageName = time() . '.' . $request->image->getClientOriginalExtension();
+        $request->image->move(public_path('images'), $imageName);
 
-        $user = new our_users ; //Creates a new model instance
 
+        // Create and save the user
+        $user = new our_users;
+        $user->full_name       = $request->fullName;
+        $user->user_name       = $request->username;
+        $user->phone           = $request->phone;
+        $user->whatsapp_number = $request->whatsAppNumber;
+        $user->address         = $request->address;
+        $user->email           = $request->email;
+        $user->password        = Hash::make($request->password); // Encrypt password
+        $user->user_image      = $imageName;
 
-        // edit here as you want these are the main fields
-        $user->full_name = $request->student_name;
-        $user->user_name = $request->student_email;
-        $user->phone = $request->student_gender;
-        $user->whatsapp_number = $file_name;
-        $user->address = $file_name;
-        $user->email = $file_name;
-        $user->password = $file_name;
-        $user->user_image = $file_name;
+        $user->save();
 
-        $user->save(); // Saves the record to the database
-
-        return redirect()->route('/')->with('success', 'User Added successfully.');
+        return redirect()->route('/')->with('Success', 'User added successfully.');
     }
 
     /**

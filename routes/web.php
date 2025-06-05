@@ -1,12 +1,19 @@
 <?php
 
+use App\Http\Controllers\OurUsersController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('index');
-});
+
 
 
 Route::get('/about', function () {
     return view('about');
 });
+
+
+Route::get('/', [OurUsersController::class, 'create']);
+
+
+Route::post('/submission', [OurUsersController::class, 'store'])->name('users.store');
+
+
