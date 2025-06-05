@@ -56,9 +56,13 @@ class OurUsersController extends Controller
         // ]);
 
         // Store the uploaded image
-        $imageName = time() . '.' . $request->image->getClientOriginalExtension();
-        $request->image->move(public_path('images'), $imageName);
-
+        if ($request->hasFile('image')) {
+            $imageName = time() . '.' . $request->image->getClientOriginalExtension();
+            $request->image->move(public_path('images'), $imageName);
+        } 
+        else {
+            $imageName = 'default.jpg'; // or handle error
+        }
 
         // Create and save the user
         $user = new our_users;
@@ -73,7 +77,7 @@ class OurUsersController extends Controller
 
         $user->save();
 
-        return redirect()->route('/')->with('Success', 'User added successfully.');
+        return redirect()->route('users.create')->with('Success', 'User added successfully.');
     }
 
     /**

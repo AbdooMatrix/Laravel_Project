@@ -11,9 +11,7 @@ Route::get('/about', function () {
 });
 
 
-Route::get('/', [OurUsersController::class, 'create']);
-
-
+Route::get('/', [OurUsersController::class, 'create'])->name('users.create');
 Route::post('/submission', [OurUsersController::class, 'store'])->name('users.store');
 
 
