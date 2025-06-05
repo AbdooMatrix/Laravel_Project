@@ -20,6 +20,11 @@
             </section>
 
             <div class="form-container">
+                @if (session('Success'))
+                    <div class="alert alert-success" style="padding: 10px; background-color: #d4edda; color: #155724; border-radius: 5px; margin-bottom: 15px;">
+                        {{ session('Success') }}
+                    </div>
+                @endif
                 <form action="{{ route('users.store') }}" id="registrationForm" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
