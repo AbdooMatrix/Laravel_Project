@@ -1,0 +1,1 @@
+<!-- This view should contain the form for adding a new user. -->
