@@ -6,7 +6,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ٌRegisteration</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Registeration</title>
     <link rel="stylesheet" href="{{ asset('css/index.css') }}">
 </head>
 <body>
@@ -17,7 +18,7 @@
                 <h1>Join Us Today</h1>
                 <p>Register now to enjoy all the features of our platform.</p>
             </section>
-            
+
             <div class="form-container">
                 <form action="{{ route('users.store') }}" id="registrationForm" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -83,7 +84,7 @@
             </div>
         </main>
     </div>
-    {{-- <script src="{{asset('js/index.js')}}"></script> --}}
+    <script src="{{ asset('js/whatsapp-verification.js') }}"></script>
     @include('partials.footer') <!-- This includes footer.blade.php -->
 </body>
 </html>

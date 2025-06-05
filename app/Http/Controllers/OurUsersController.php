@@ -43,12 +43,12 @@ class OurUsersController extends Controller
     public function store(Request $request)
     {
 
- 
+
         // Store the uploaded image
         if ($request->hasFile('image')) {
             $imageName = time() . '.' . $request->image->getClientOriginalExtension();
             $request->image->move(public_path('images'), $imageName);
-        } 
+        }
         else {
             $imageName = 'default.jpg'; // or handle error
         }
@@ -79,7 +79,7 @@ class OurUsersController extends Controller
     /**
      * The show() function is responsible for:
      * Displaying the details of a single user
-     * It receives a our_users model instance 
+     * It receives a our_users model instance
      * Then it passes that user data to a Blade view named show.blade.php
      */
     public function show(our_users $user)
@@ -95,7 +95,7 @@ class OurUsersController extends Controller
      */
     /**
      * The edit() function is responsible for:
-     * Showing a form pre-filled with an existing user’s data, so the user can edit and update it.
+     * Showing a form pre-filled with an existing user's data, so the user can edit and update it.
      * It receives the specific our_users model instance .
      * Then it loads the edit.blade.php view and passes the user data to it.
      */
@@ -154,5 +154,48 @@ class OurUsersController extends Controller
         $student->delete();
 
         return redirect()->route('students.index')->with('success', 'Student Data deleted successfully');
+    }
+
+    public function verifyWhatsApp(Request $request)
+    {
+        if (!$request->has('whatsAppNumber') || empty($request->whatsAppNumber)) {
+            return response()->json(['error' => 'Please enter a WhatsApp number.'], 400);
+        }
+
+        $whatsappNumber = $request->whatsAppNumber;
+        $apiUrl = "https://whatsapp-number-validator3.p.rapidapi.com/WhatsappNumberHasItWithToken";
+        $postData = json_encode(["phone_number" => $whatsappNumber]);
+
+        $headers = [
+            "Content-Type: application/json",
+            "x-rapidapi-host: whatsapp-number-validator3.p.rapidapi.com",
+            "x-rapidapi-key: 17866e6b0bmsh460e6cdd9c2d14ap12acb7jsn3e2968d79057"
+        ];
+
+        $curl = curl_init();
+        curl_setopt_array($curl, [
+            CURLOPT_URL => $apiUrl,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => $postData,
+            CURLOPT_HTTPHEADER => $headers
+        ]);
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+
+        if ($err) {
+            return response()->json(['error' => 'API request error: ' . $err], 500);
+        }
+
+        $result = json_decode($response, true);
+
+        if (isset($result["status"]) && $result["status"] === "valid") {
+            return response()->json(['status' => 'success', 'message' => 'Valid WhatsApp number.']);
+        } else {
+            return response()->json(['status' => 'error', 'message' => 'Invalid WhatsApp number.']);
+        }
     }
 }

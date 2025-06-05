@@ -11,5 +11,6 @@ Route::get('/about', function () { return view('about'); });
 
 Route::get('/', [OurUsersController::class, 'create'])->name('users.create');
 Route::post('/', [OurUsersController::class, 'store'])->name('users.store');
+Route::post('/verify-whatsapp', [OurUsersController::class, 'verifyWhatsApp'])->name('verify.whatsapp');
 
 
