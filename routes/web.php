@@ -6,9 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/about', function () {
-    return view('about');
-});
+Route::get('/about', function () { return view('about'); });
 
 
 Route::get('/', [OurUsersController::class, 'create'])->name('users.create');
