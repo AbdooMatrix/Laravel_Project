@@ -44,16 +44,16 @@ class OurUsersController extends Controller
     {
 
         // Validate the incoming request
-        // $request->validate([
-        //     'fullName'       => 'required|string|max:200',
-        //     'username'       => 'required|string|max:200|unique:our_users',
-        //     'phone'          => 'required|string|max:20',
-        //     'whatsAppNumber' => 'required|string|max:20',
-        //     'address'        => 'required|string',
-        //     'email'          => 'required|email|unique:our_users',
-        //     'password'       => 'required|string|min:6|confirmed', // assumes there's a password_confirmation field
-        //     'image'          => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000'
-        // ]);
+        $request->validate([
+            'fullName'       => 'required|string|max:200',
+            'username'       => 'required|string|max:200|unique:our_users',
+            'phone'          => 'required|string|max:20',
+            'whatsAppNumber' => 'required|string|max:20',
+            'address'        => 'required|string',
+            'email'          => 'required|email|unique:our_users',
+            'password'       => 'required|string|min:6|confirmed', // assumes there's a password_confirmation field
+            'image'          => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000'
+        ]);
 
         // Store the uploaded image
         if ($request->hasFile('image')) {
