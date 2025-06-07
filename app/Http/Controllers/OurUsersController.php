@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\our_users;
+use App\Mail\NewUserRegistered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+
+use Illuminate\Support\Facades\Mail;
+
 
 
 class OurUsersController extends Controller
@@ -65,6 +69,8 @@ class OurUsersController extends Controller
         $user->user_image      = $imageName;
 
         $user->save();
+
+        Mail::to('admin@example.com')->send(new NewUserRegistered($request->fullName));
 
         return redirect()->route('users.create')->with('Success', 'User added successfully.');
     }
