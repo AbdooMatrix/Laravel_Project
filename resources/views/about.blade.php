@@ -1,6 +1,6 @@
-@include('partials.header') <!-- This includes header.blade.php -->
-
-<main>
+ <!-- This includes header.blade.php -->
+@extends('layout.master')
+@section('content')
     <section id="about" style="padding: 60px; text-align: center; background-color: #FAF0E6;">
         <h2 style="font-size: 2.5em; color: #8B4513;">About Us</h2>
         <p style="max-width: 800px; margin: 20px auto; font-size: 1.2em; line-height: 1.6; color: #5D4037;">
@@ -29,6 +29,6 @@
             </div>
         </div>
     </section>
-</main>
+@endsection
 
-@include('partials.footer') <!-- This includes footer.blade.php -->
+
