@@ -47,7 +47,24 @@ class OurUsersController extends Controller
     public function store(Request $request)
     {
 
-
+        $request->validate([
+            'fullName'        => 'required|string|max:200',
+            'username'        => 'required|string|max:200|unique:our_users,user_name',
+            'phone'           => 'required|string|max:20',
+            'whatsAppNumber'  => 'required|string|max:20',
+            'address'         => 'required|string',
+            'email'           => 'required|email|max:200|unique:our_users,email',
+            'password'        => [
+                'required',
+                'string',
+                'min:8',
+                'confirmed',
+                'regex:/[0-9]/',         // At least one digit
+                'regex:/[!@#$%^&*]/'     // At least one special character
+            ],
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048|dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000',
+        ]);
+        
         // Store the uploaded image
         if ($request->hasFile('image')) {
             $imageName = time() . '.' . $request->image->getClientOriginalExtension();
