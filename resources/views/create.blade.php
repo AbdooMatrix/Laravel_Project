@@ -3,8 +3,8 @@
 <div class="container">
     <main>
         <section class="hero">
-            <h1>Join Us Today</h1>
-            <p>Register now to enjoy all the features of our platform.</p>
+            <h1>@lang('messages.join_us')</h1>
+            <p>@lang('messages.register_now')</p>
         </section>
 
         <div class="form-container">
@@ -45,7 +45,7 @@
                             <option value="61">+61 (Australia)</option>
                         </select>
                         <input type="text" id="whatsAppNumber" name="whatsAppNumber" value="{{ old('whatsAppNumber') }}" required pattern="\d{7,15}" title="Enter a valid WhatsApp number">
-                        <button type="button" id="validateWhatsApp">Validate</button>
+                        <button type="button" id="validateWhatsApp">@lang('messages.validate')</button>
                     </div>
                     <p id="whatsappValidationResult"></p>
                     @error('whatsAppNumber') <div style="color:red;">{{ $message }}</div> @enderror

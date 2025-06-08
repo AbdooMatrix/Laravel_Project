@@ -146,11 +146,11 @@
 
     <footer>
         <div class="footer-content">
-            <a href="#"><i class="fas fa-phone"></i> Contact Us</a>
-            <a href="#"><i class="fas fa-shield-alt"></i> Privacy Policy</a>
-            <a href="#"><i class="fas fa-gavel"></i> Terms of Service</a>
+            <a href="#"><i class="fas fa-phone"></i> @lang('messages.contact_us')</a>
+            <a href="#"><i class="fas fa-shield-alt"></i> @lang('messages.privacy_policy')</a>
+            <a href="#"><i class="fas fa-gavel"></i> @lang('messages.terms_of_service')</a>
         </div>
-        <p>© <?php echo date("Y"); ?> Your Company. All rights reserved.</p> <!-- Use PHP for dynamic year -->
+        <p>© <?php echo date("Y"); ?> @lang('messages.copyright')</p> <!-- Use PHP for dynamic year -->
     </footer>
 
 </body>

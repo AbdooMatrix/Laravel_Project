@@ -211,9 +211,9 @@
                         </select>
                     </li>
 
-                    <li><a href="{{ url('/') }}"><i class="fas fa-home fa-beat-fade"></i>Home</a></li>
-                    <li><a href="{{ url('/about') }}"><i class="fas fa-info-circle fa-spin"></i>About</a></li>
-                    <li><a href="#contact"><i class="fas fa-envelope fa-bounce"></i>Contact</a></li>
+                    <li><a href="{{ url('/') }}"><i class="fas fa-home fa-beat-fade"></i>@lang('messages.home')</a></li>
+                    <li><a href="{{ url('/about') }}"><i class="fas fa-info-circle fa-spin"></i>@lang('messages.about')</a></li>
+                    <li><a href="#contact"><i class="fas fa-envelope fa-bounce"></i>@lang('messages.contact')</a></li>
                 </ul>
             </nav>
         </div>
