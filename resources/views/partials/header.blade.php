@@ -184,10 +184,36 @@
             </div>
             <nav>
                 <ul>
+                    <!-- Language Dropdown -->
+                    <li style="position: relative;">
+                        <select onchange="window.location.href = this.value;" style="
+                            padding: 10px 18px;
+                            border-radius: 50px;
+                            font-family: 'Poppins', sans-serif;
+                            font-weight: 600;
+                            font-size: 17px;
+                            color: #FFF8DC;
+                            background: rgba(255, 248, 220, 0.1);
+                            border: 2px solid rgba(255, 248, 220, 0.3);
+                            cursor: pointer;
+                            transition: all 0.3s ease;
+                            text-shadow: 1px 1px 2px rgba(78, 52, 46, 0.5);
+                            appearance: none;
+                            -webkit-appearance: none;
+                            -moz-appearance: none;
+                            padding-right: 35px;
+                            background-image: url('data:image/svg+xml;utf8,<svg fill=\'%23FFF8DC\' height=\'24\' viewBox=\'0 0 24 24\' width=\'24\' xmlns=\'http://www.w3.org/2000/svg\'><path d=\'M7 10l5 5 5-5z\'/></svg>');
+                            background-repeat: no-repeat;
+                            background-position: right 10px center;
+                        ">
+                            <option value="{{ url('lang/en') }}" {{ app()->getLocale() == 'en' ? 'selected' : '' }}>English</option>
+                            <option value="{{ url('lang/ar') }}" {{ app()->getLocale() == 'ar' ? 'selected' : '' }}>العربية</option>
+                        </select>
+                    </li>
 
                     <li><a href="{{ url('/') }}"><i class="fas fa-home fa-beat-fade"></i>Home</a></li>
                     <li><a href="{{ url('/about') }}"><i class="fas fa-info-circle fa-spin"></i>About</a></li>
-                    <li><a href="#contact"><i class="fas fa-envelope fa-bounce"></i> Contact</a></li>
+                    <li><a href="#contact"><i class="fas fa-envelope fa-bounce"></i>Contact</a></li>
                 </ul>
             </nav>
         </div>

@@ -16,26 +16,26 @@
             <form action="{{ route('users.store') }}" id="registrationForm" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
-                    <label for="fullName"><i class="fas fa-user"></i> Full Name</label>
+                    <label for="fullName"><i class="fas fa-user"></i> @lang('messages.full_name')</label>
                     <input type="text" id="fullName" name="fullName" value="{{ old('fullName') }}" required>
                     @error('fullName') <div style="color:red;">{{ $message }}</div> @enderror
                 </div>
 
                 <div class="form-group">
-                    <label for="username"><i class="fas fa-user-circle"></i> Username</label>
+                    <label for="username"><i class="fas fa-user-circle"></i> @lang('messages.username')</label>
                     <input type="text" id="username" name="username" value="{{ old('username') }}" required onkeyup="checkUsername()">
                     <span id="username-status"></span>
                     @error('username') <div style="color:red;">{{ $message }}</div> @enderror
                 </div>
 
                 <div class="form-group">
-                    <label for="phone"><i class="fas fa-phone"></i> Phone</label>
+                    <label for="phone"><i class="fas fa-phone"></i> @lang('messages.phone')</label>
                     <input type="text" id="phone" name="phone" value="{{ old('phone') }}" required pattern="\d{7,15}" title="Enter a valid phone number">
                     @error('phone') <div style="color:red;">{{ $message }}</div> @enderror
                 </div>
 
                 <div class="form-group">
-                    <label for="whatsAppNumber"><i class="fab fa-whatsapp"></i> WhatsApp Number</label>
+                    <label for="whatsAppNumber"><i class="fab fa-whatsapp"></i> @lang('messages.whatsapp_number')</label>
                     <div class="whatsapp-group">
                         <select id="countryCode" name="countryCode">
                             <option value="1">+1 (USA)</option>
@@ -52,36 +52,36 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="address"><i class="fas fa-map-marker-alt"></i> Address</label>
+                    <label for="address"><i class="fas fa-map-marker-alt"></i> @lang('messages.address')</label>
                     <input type="text" id="address" name="address" value="{{ old('address') }}" required>
                     @error('address') <div style="color:red;">{{ $message }}</div> @enderror
                 </div>
 
                 <div class="form-group">
-                    <label for="password"><i class="fas fa-lock"></i> Password</label>
+                    <label for="password"><i class="fas fa-lock"></i> @lang('messages.password')</label>
                     <input type="password" id="password" name="password" required>
                     @error('password') <div style="color:red;">{{ $message }}</div> @enderror
                 </div>
 
                 <div class="form-group">
-                    <label for="confirmPassword"><i class="fas fa-lock"></i> Confirm Password</label>
+                    <label for="confirmPassword"><i class="fas fa-lock"></i> @lang('messages.confirm_password')</label>
                     <input type="password" id="password_confirmation" name="password_confirmation" required>
                     @error('password_confirmation') <div style="color:red;">{{ $message }}</div> @enderror
                 </div>
 
                 <div class="form-group">
-                    <label for="email"><i class="fas fa-envelope"></i> Email</label>
+                    <label for="email"><i class="fas fa-envelope"></i> @lang('messages.email')</label>
                     <input type="email" id="email" name="email" value="{{ old('email') }}" required>
                     @error('email') <div style="color:red;">{{ $message }}</div> @enderror
                 </div>
 
                 <div class="form-group">
-                    <label for="image"><i class="fas fa-image"></i> Upload Profile Picture</label>
+                    <label for="image"><i class="fas fa-image"></i> @lang('messages.upload_profile_picture')</label>
                     <input type="file" id="image" name="image" accept=".jpg,.jpeg,.png,.gif" required>
                     @error('image') <div style="color:red;">{{ $message }}</div> @enderror
                 </div>
 
-                <button type="submit" class="register-btn">Register</button>
+                <button type="submit" class="register-btn">@lang('messages.register')</button>
             </form>
         </div>
     </main>
