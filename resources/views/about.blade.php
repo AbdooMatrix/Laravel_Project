@@ -8,7 +8,7 @@
         </p>
 
         <div style="display: flex; justify-content: center; align-items: center; margin-top: 30px;">
-            <img src="img.jpeg" alt="About Us" style="width: 15%; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+            <img src="{{ asset('images/logo.jpeg') }}" alt="About Us" style="width: 15%; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
         </div>
 
         <div style="margin-top: 40px; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
