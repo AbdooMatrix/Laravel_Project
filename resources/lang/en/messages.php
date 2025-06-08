@@ -8,7 +8,7 @@ return [
 
     // create
     "join_us" => "Join Us Today",
-    "register_now" => "Register now to enjoy all the features of our platform.",
+    "register_now" => "Register now to enjoy all the features of our platform",
     "full_name" => "Full Name",
     "username" => "Username",
     "phone" => "Phone",
