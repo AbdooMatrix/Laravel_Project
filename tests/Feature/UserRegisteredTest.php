@@ -37,21 +37,21 @@ class UserRegisteredTest extends TestCase
             'user_image' => 'default.jpg',
         ]);
     }
-
     /**
-     * Test WhatsApp number validation with an invalid number.
+     * Test WhatsApp number validation with a valid number.
      * @return void
      */
-    public function test_verify_whatsapp_invalid_number()
+    public function test_verify_whatsapp_valid_number()
     {
-        $invalidWhatsAppNumber = '111901204';
+        $validWhatsAppNumber = '+201119012042';
+
         $response = $this->postJson(route('verify.whatsapp'),
-            ['whatsAppNumber' => $invalidWhatsAppNumber]);
+            ['whatsAppNumber' => $validWhatsAppNumber]);
 
         $response->assertStatus(200);
         $response->assertJson([
-            'status' => 'error',
-            'message' => 'Invalid WhatsApp number.'
+            'status' => 'success',
+            'message' => 'Valid WhatsApp number.'
         ]);
     }
 
