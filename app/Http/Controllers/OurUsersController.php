@@ -64,7 +64,7 @@ class OurUsersController extends Controller
             ],
             'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048|dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000',
         ]);
-        
+
         // Store the uploaded image
         if ($request->hasFile('image')) {
             $imageName = time() . '.' . $request->image->getClientOriginalExtension();
@@ -189,10 +189,12 @@ class OurUsersController extends Controller
         $apiUrl = "https://whatsapp-number-validator3.p.rapidapi.com/WhatsappNumberHasItWithToken";
         $postData = json_encode(["phone_number" => $whatsappNumber]);
 
+        // Abdo API Key: 3536f4e303msh8641134665eb3b3p110311jsn6ad8d53e9d16
+        // Omar API Key: 17866e6b0bmsh460e6cdd9c2d14ap12acb7jsn3e2968d79057
         $headers = [
             "Content-Type: application/json",
             "x-rapidapi-host: whatsapp-number-validator3.p.rapidapi.com",
-            "x-rapidapi-key: 17866e6b0bmsh460e6cdd9c2d14ap12acb7jsn3e2968d79057"
+            "x-rapidapi-key: 3536f4e303msh8641134665eb3b3p110311jsn6ad8d53e9d16"
         ];
 
         $curl = curl_init();
