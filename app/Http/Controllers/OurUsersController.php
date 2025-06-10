@@ -82,7 +82,7 @@ class OurUsersController extends Controller
         $user->whatsapp_number = $request->whatsAppNumber;
         $user->address         = $request->address;
         $user->email           = $request->email;
-        $user->password        = Hash::make($request->password); // Encrypt password
+        $user->password        = Hash::make($request->password); // Laravel Encrypt password
         $user->user_image      = $imageName;
 
         $user->save();
